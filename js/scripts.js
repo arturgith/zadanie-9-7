@@ -74,6 +74,7 @@ function setGamePoints() {
     playerPointsElem.innerHTML = player.score;
     computerPointsElem.innerHTML = computer.score;
 
+    checkGameWinner ();
 }
 //Losowanie wyboru komputera
 
@@ -88,15 +89,7 @@ var playerPickElem = document.getElementById('js-playerPick'),
     computerResultElem = document.getElementById('js-computerResult');
 
 function playerPick(playerPick) {
-	if (player.score == 10) {
-		alert(player.name + "is a Game Winner!");
-		gameState = 'notStarted';
-		setGameElements();
-	} else if (computer.score ==10) {
-		alert("Computer is a Game Winner!");
-		gameState = 'notStarted';
-		setGameElements();
-	} 
+	
     var computerPick = getComputerPick();
 
     playerPickElem.innerHTML = playerPick;
@@ -135,14 +128,21 @@ function checkRoundWinner(playerPick, computerPick) {
 }
 
 //Zakończenie rozgrywki
-/*
-function checkGameWinner (player.score, computer.score) {
+
+function checkGameWinner () {
 	if (player.score == 10) {
-		playerResultElem.innerHTML = "Game Winner!";
-		newGame();
+		alert(player.name + " is a Game Winner!");
+		player.score = computer.score = 0;
+		playerPointsElem.innerHTML = player.score;
+        computerPointsElem.innerHTML = computer.score;
+		gameState = 'notStarted';
+		setGameElements();
 	} else if (computer.score ==10) {
-		computerResultElem.innerHTML = "Game Winner!";
-		newGame();
-	} else checkRoundWinner();
+		alert("Computer is a Game Winner!");
+		player.score = computer.score = 0;
+		playerPointsElem.innerHTML = player.score;
+        computerPointsElem.innerHTML = computer.score;
+		gameState = 'notStarted';
+		setGameElements();
+	} 
 }
-*/
